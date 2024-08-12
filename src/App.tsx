@@ -2,6 +2,12 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import '@aws-amplify/ui-react/styles.css'
+import { Amplify } from 'aws-amplify'
+import { withAuthenticator } from '@aws-amplify/ui-react'
+import outputs from '../amplify_outputs.json'
+
+Amplify.configure(outputs)
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,4 +38,4 @@ function App() {
   )
 }
 
-export default App
+export default withAuthenticator(App)
