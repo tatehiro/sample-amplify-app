@@ -16,7 +16,6 @@ const schema = a.schema({
   .authorization((allow) => [allow.owner()]),
   Person: a
   .model({
-    boardId: a.id(),
     board: a.hasMany('Board','personId'),
   })
   .authorization((allow) => [allow.owner()]),
