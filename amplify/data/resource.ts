@@ -9,14 +9,20 @@ and "delete" any "Todo" records.
 const schema = a.schema({
   Board: a
   .model({
-    message:a.string(),
-    personId: a.id(),
-    person: a.belongsTo('Person', 'personId')
+    message: a.string(),
+    name: a.string(),
+    image: a.string(),
+    personID: a.id(),
+    person: a.belongsTo('Person', 'personID')
   })
   .authorization((allow) => [allow.owner()]),
   Person: a
   .model({
-    board: a.hasMany('Board','personId'),
+    name: a.string(),
+    email: a.email(),
+    age: a.integer(),
+    tel: a.phone(),
+    board: a.hasMany('Board','personID'),
   })
   .authorization((allow) => [allow.owner()]),
 });
